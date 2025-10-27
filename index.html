@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Типография «Пирамида» — печать в Ростове-на-Дону</title>
+  <meta name="description" content="Типография «Пирамида»: визитки, листовки, баннеры. Срочная печать, доставка по Ростову-на-Дону. Ежедневно 9:00–18:00." />
+  <style>
+    :root{
+      /* Базовая палитра синего + допускаем цветные фото */
+      --bg: #0b1224;
+      --bg-soft: #0f2547;
+      --ink: #e8eef9;
+      --muted: #a9b9d8;
+      --line: rgba(255,255,255,.08);
+      --accent: #2e56a3;
+      --accent-strong: #3b6bd1;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --container: 1200px;
+      --header-h: 78px;
+      --parallax: 0px;
+    }
+
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color:var(--ink); background: radial-gradient(1400px 900px at 72% -10%, #143066 0%, transparent 60%), var(--bg);
+      line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:100%; max-width:var(--container); margin:0 auto; padding:0 24px}
+
+    /* Шапка */
+    header{
+      position:sticky; top:0; z-index:60; height:var(--header-h);
+      backdrop-filter: saturate(1.1) blur(10px);
+      background: linear-gradient(180deg, rgba(10,20,40,.85), rgba(10,20,40,.55));
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:var(--header-h)}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .logo-mini{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--accent-strong), var(--accent)); box-shadow: var(--shadow); font-weight:800}
+    .menu{display:flex; gap:24px; align-items:center}
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1}
+
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; border:1px solid var(--line); background: linear-gradient(180deg, #1a3566, #142a52); box-shadow: 0 6px 18px rgba(17,36,74,.35) inset, 0 10px 20px rgba(0,0,0,.25); transition: transform .18s ease, box-shadow .18s ease, background .18s ease}
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,0,0,.25), 0 12px 30px rgba(59,107,209,.25)}
+
+    /* ГЕРОЙ с фоновым цехом и параллакс-логотипом */
+    .hero{position:relative; padding:0 0 60px; overflow:hidden}
+    .hero-visual{position:relative; height:62vh; min-height:460px; max-height:740px}
+    .hero-bg{position:absolute; inset:-6% -2% -6% -2%; background:url('https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat; filter:saturate(1.1) contrast(1.05) brightness(.9)}
+    .hero-overlay{position:absolute; inset:0; background: radial-gradient(1200px 700px at 70% -10%, rgba(20,40,80,.35), transparent 60%), linear-gradient(180deg, rgba(6,10,20,.55) 0%, rgba(6,10,20,.65) 45%, rgba(6,10,20,.9) 100%)}
+    .logo-mark{position:absolute; left:50%; top:45%; transform: translate(-50%, calc(-50% + var(--parallax))); width:min(46vw, 540px); aspect-ratio:1/1; display:grid; place-items:center; pointer-events:none}
+    .logo-mark svg{width:100%; height:100%; filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
+    .hero-content{position:relative; z-index:1}
+
+    .hero-inner{margin-top:-80px}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    .eyebrow{letter-spacing:.18em; text-transform:uppercase; color:var(--muted); font-size:.86rem}
+    h1{margin:.4em 0 .5em; font-size: clamp(32px, 5vw, 56px); line-height:1.1}
+    .lead{color:var(--muted); font-size: clamp(16px, 2.2vw, 18px)}
+    .cta{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap}
+
+    .hero-card{border:1px solid var(--line); border-radius:var(--radius); padding:28px; background: linear-gradient(180deg, rgba(20,42,82,.7), rgba(11,26,51,.6)); box-shadow: var(--shadow)}
+    .metrics{display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:12px}
+    .metric{padding:16px; border:1px solid var(--line); border-radius:var(--radius-sm); background:#0f2547cc}
+    .metric b{display:block; font-size:1.4rem}
+    .note{font-size:.92rem; color:var(--muted)}
+
+    section{padding:72px 0; scroll-margin-top: calc(var(--header-h) + 16px)}
+    .section-title{font-size: clamp(22px, 3.6vw, 34px); margin:0 0 16px}
+    .section-lead{color:var(--muted); margin:0 0 24px}
+
+    /* О компании */
+    .features{display:grid; grid-template-columns: repeat(4,1fr); gap:18px}
+    .feature{padding:20px; border-radius:var(--radius-sm); border:1px solid var(--line); background: linear-gradient(180deg, #132b56, #11274f); transition: transform .18s ease, box-shadow .18s ease}
+    .feature:hover{ transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,.35)}
+    .feature h3{margin:8px 0 6px; font-size:1.05rem}
+    .feature p{margin:0; color:var(--muted)}
+
+    /* Услуги с КРАСОЧНЫМИ изображенияМИ */
+    .cards{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
+    .card{position:relative; border-radius:var(--radius); border:1px solid var(--line); overflow:hidden; background:#0f2547}
+    .card-media{position:relative; height:180px; overflow:hidden}
+    .card-media img{width:100%; height:100%; object-fit:cover; transform: scale(1.05); transition: transform .35s ease}
+    .card:hover .card-media img{transform: scale(1.12)}
+    .card-body{padding:20px}
+    .card h4{margin:0 0 8px; font-size:1.25rem}
+    .card p{margin:0 0 12px; color:var(--muted)}
+    .chip{display:inline-block; padding:6px 10px; font-size:.85rem; border:1px solid var(--line); border-radius:999px; background:#0f2547}
+    .card .btn{margin-top:10px}
+
+    /* Портфолио */
+    .folio{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    .folio figure{position:relative; margin:0; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#0f2547}
+    .folio img{width:100%; height:220px; object-fit:cover; display:block; transition: transform .35s ease, opacity .35s ease}
+    .folio figure:hover img{transform:scale(1.06)}
+    .folio figcaption{position:absolute; bottom:8px; left:8px; right:8px; background:rgba(6,10,20,.55); padding:8px 10px; border-radius:10px; font-size:.9rem}
+
+    /* Контакты */
+    .contacts{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:stretch}
+    .panel{padding:24px; border-radius:var(--radius); border:1px solid var(--line); background: linear-gradient(180deg, #132b56, #10264f)}
+    .meta{display:grid; grid-template-columns: 110px 1fr; gap:12px; row-gap:14px}
+    .meta dt{color:var(--muted)}
+    .meta dd{margin:0}
+    .map{border-radius:var(--radius); border:1px solid var(--line); background: conic-gradient(from 180deg, #1a3566, #11274f, #1a3566); display:grid; place-items:center; height:100%}
+    .map span{opacity:.7}
+
+    footer{padding:28px 0 48px; color:var(--muted); border-top:1px solid var(--line)}
+
+    @media (max-width: 1024px){
+      .features{grid-template-columns: repeat(2,1fr)}
+      .cards{grid-template-columns: repeat(2,1fr)}
+      .folio{grid-template-columns: repeat(2,1fr)}
+      .hero-grid, .contacts{grid-template-columns:1fr}
+    }
+    @media (max-width: 480px){
+      :root{ --header-h: 64px }
+      .container{padding:0 18px}
+      .menu{display:none}
+      .menu.open{display:flex; flex-direction:column; gap:14px; position:absolute; top:var(--header-h); right:18px; background:#0f2547; border:1px solid var(--line); border-radius:14px; padding:12px 14px; box-shadow: var(--shadow)}
+      .hero-visual{height:56vh; min-height:360px}
+      .metrics{grid-template-columns:1fr 1fr}
+      .features{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .folio{grid-template-columns:1fr}
+      .cta{gap:10px}
+      .btn{width:100%; justify-content:center}
+    }
+
+    .burger{display:none; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; border:1px solid var(--line); background:#122a55}
+    .burger span{display:block; width:20px; height:2px; background:var(--ink); position:relative}
+    .burger span::before,.burger span::after{content:""; position:absolute; left:0; width:100%; height:2px; background:var(--ink)}
+    .burger span::before{top:-6px} .burger span::after{top:6px}
+    @media (max-width: 820px){ .burger{display:flex} }
+
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <!-- Шапка и навигация -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <div class="logo-mini" aria-label="Логотип Пирамида">▲</div>
+        <span>Типография «Пирамида»</span>
+      </a>
+      <nav>
+        <button class="burger" aria-label="Меню" onclick="toggleMenu()"><span></span></button>
+        <div id="menu" class="menu">
+          <a href="#about">О компании</a>
+          <a href="#services">Услуги</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="#contacts">Контакты</a>
+          <a href="#contacts" class="btn">Заказать печать</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ГЕРОЙ: фон-цех + параллакс-логотип -->
+  <section id="top" class="hero" aria-label="Главный экран">
+    <div class="hero-visual" role="img" aria-label="Современный печатный цех">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <!-- SVG-логотип "Пирамида" -->
+      <div class="logo-mark" aria-label="Логотип Пирамида с параллаксом">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3b6bd1"/>
+              <stop offset="100%" stop-color="#2e56a3"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#1a3566" flood-opacity="0.6"/>
+            </filter>
+          </defs>
+          <!-- Пирамида -->
+          <polygon points="50,6 94,94 6,94" fill="url(#g1)" filter="url(#glow)"/>
+          <!-- Буква П -->
+          <path d="M20 75 V25 H70 a15 15 0 0 1 15 15 V75 H70 V40 H35 V75Z" fill="#0b1224" opacity=".9"/>
+          <text x="50" y="96" text-anchor="middle" font-size="11" fill="#e8eef9" style="letter-spacing:.1em">ПИРАМИДА</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container hero-inner hero-content">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Ростов-на-Дону • ежедневно 9:00–18:00</div>
+          <h1>Печатаем быстрее, чем вы успеете придумать идею</h1>
+          <p class="lead">Визитки, листовки, баннеры и полный цикл допечатной подготовки. Срочные тиражи, цветопроба, доставка по городу.</p>
+          <div class="cta">
+            <a class="btn" href="#contacts">Оформить заказ</a>
+            <a class="btn" href="#services" style="background:linear-gradient(180deg,#1a3566,#16325e)">Смотреть услуги</a>
+          </div>
+        </div>
+        <aside class="hero-card reveal" aria-label="Ключевые показатели">
+          <div class="eyebrow">Почему мы</div>
+          <div class="metrics">
+            <div class="metric"><b>24ч</b><span class="note">Срочная печать</span></div>
+            <div class="metric"><b>3000+</b><span class="note">реализованных проектов</span></div>
+            <div class="metric"><b>99%</b><span class="note">точность цвета</span></div>
+          </div>
+          <p class="note" style="margin-top:12px">Работаем с макетами PDF/X, Pantone, DeviceLink. Поможем подготовить файл без доплат.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- О компании -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">О компании</h2>
+      <p class="section-lead">«Пирамида» — команда инженеров-препресс и печатников. Сильная цветопередача, аккуратная постпечать и честные сроки.</p>
+      <div class="features">
+        <div class="feature reveal">
+          <h3>Собственный парк</h3>
+          <p>Офсет и широкоформат — контролируем весь цикл от файла до отгрузки.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Цветопроба</h3>
+          <p>Pantone, ICC/DeviceLink, спектрофотометрия. Что согласовали — то и получите.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Срочные тиражи</h3>
+          <p>Малые и средние партии за 24 часа. Возможен самовывоз или курьер.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Поддержка макетов</h3>
+          <p>Проверка PDF/X, вылеты, overprint, растры. Поможем избежать брака.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Услуги (меню) с изображениями -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Услуги</h2>
+      <p class="section-lead">Три популярных направления. Нужен другой вид печати? Напишите — рассчитаем быстро.</p>
+      <div class="cards">
+        <article class="card reveal" aria-label="Визитки">
+          <div class="card-media">
+            <img alt="Визитки" src="https://images.unsplash.com/photo-1585247226801-bc613c441316?auto=format&fit=crop&w=1200&q=80"/>
+          </div>
+          <div class="card-body">
+            <span class="chip">Визитки</span>
+            <h4>Визитки</h4>
+            <p>Цифровая печать от 100 шт. Плотная мелованная бумага, ламинация по запросу.</p>
+            <a class="btn" href="#contacts">Заказать визитки</a>
+          </div>
+        </article>
+
+        <article class="card reveal" aria-label="Листовки">
+          <div class="card-media">
+            <img alt="Листовки" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1200&q=80"/>
+          </div>
+          <div class="card-body">
+            <span class="chip">Листовки</span>
+            <h4>Листовки</h4>
+            <p>А6–А4, мелованная или офсетная бумага. Односторонние или двусторонние.</p>
+            <a class="btn" href="#contacts">Заказать листовки</a>
+          </div>
+        </article>
+
+        <article class="card reveal" aria-label="Баннеры">
+          <div class="card-media">
+            <img alt="Баннеры" src="https://images.unsplash.com/photo-1520975922203-b9ea28cbb0d5?auto=format&fit=crop&w=1200&q=80"/>
+          </div>
+          <div class="card-body">
+            <span class="chip">Баннеры</span>
+            <h4>Баннеры</h4>
+            <p>Широкоформат ПВХ. Плотный материал, проварка краёв, люверсы по периметру.</p>
+            <a class="btn" href="#contacts">Заказать баннер</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Портфолио -->
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Наше портфолио</h2>
+      <p class="section-lead">Подборка свежих работ: фирменные визитки, рекламные листовки и наружные баннеры.</p>
+      <div class="folio">
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1529335764857-3f1164d1cb24?auto=format&fit=crop&w=1200&q=80" alt="Визитки, серия 01"><figcaption>Визитки • Серия 01</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1505238680356-667803448bb6?auto=format&fit=crop&w=1200&q=80" alt="Листовки, промо"><figcaption>Листовки • Промо</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1200&q=80" alt="Баннер, стрит"><figcaption>Баннер • Street</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=1200&q=80" alt="Визуал фирменного стиля"><figcaption>Фирстиль • Набор</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1517814387957-731046d2d7e5?auto=format&fit=crop&w=1200&q=80" alt="Широкоформат в производстве"><figcaption>Широкоформат • Производство</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1200&q=80" alt="Каталоги и буклеты"><figcaption>Каталоги • Буклеты</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contacts">
+    <div class="container contacts">
+      <div class="panel reveal">
+        <h2 class="section-title">Контакты</h2>
+        <dl class="meta">
+          <dt>График</dt>
+          <dd>Ежедневно: 9:00–18:00</dd>
+          <dt>Город</dt>
+          <dd>Ростов-на-Дону</dd>
+          <dt>Телефон</dt>
+          <dd><a href="tel:+7">+7 (___) ___‑__‑__</a></dd>
+          <dt>E‑mail</dt>
+          <dd><a href="mailto:info@piramida-print.ru">info@piramida-print.ru</a></dd>
+        </dl>
+        <p class="note" style="margin-top:14px">Отправьте макет в PDF/X, укажите тираж и срок. Мы подтвердим стоимость и время готовности.</p>
+        <div class="cta">
+          <a class="btn" href="mailto:info@piramida-print.ru?subject=Заказ%20печати%20—%20Пирамида">Отправить макет</a>
+          <a class="btn" href="tel:+7">Позвонить</a>
+        </div>
+      </div>
+      <div class="map reveal" aria-label="Карта">
+        <span>Здесь будет карта офиса в Ростове-на-Дону</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap">
+      <div>© <span id="y"></span> Типография «Пирамида». Все права защищены.</div>
+      <div>ИНН / ОГРНИП — по запросу • Политика конфиденциальности</div>
+    </div>
+  </footer>
+
+  <script>
+    // Год в подвале
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Мобильное меню
+    function toggleMenu(){
+      const m = document.getElementById('menu');
+      m.classList.toggle('open');
+    }
+
+    // Анимация появления блоков
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target) } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Параллакс логотипа
+    const root = document.documentElement;
+    const hero = document.querySelector('.hero-visual');
+    function onScroll(){
+      const rect = hero.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const progress = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+      const shift = (progress * 36) - 12; // диапазон -12..24px
+      root.style.setProperty('--parallax', shift.toFixed(1)+"px");
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('load', onScroll);
+  </script>
+</body>
+</html>
