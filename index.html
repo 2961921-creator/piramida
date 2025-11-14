@@ -95,6 +95,30 @@
     .chip{display:inline-block; padding:6px 10px; font-size:.85rem; border:1px solid var(--line); border-radius:999px; background:#0f2547}
     .card .btn{margin-top:10px}
 
+    /* Процесс */
+    .timeline{list-style:none; margin:0; padding:0; display:grid; gap:16px}
+    .step{display:flex; gap:18px; align-items:flex-start; padding:20px; border-radius:var(--radius); border:1px solid var(--line); background: linear-gradient(180deg, #132b56, #10264f)}
+    .step-index{flex-shrink:0; width:46px; height:46px; border-radius:14px; display:grid; place-items:center; background:rgba(46,86,163,.2); font-weight:600; color:var(--accent-strong); font-variant-numeric:tabular-nums}
+    .step h3{margin:0 0 6px}
+    .step p{margin:0; color:var(--muted)}
+
+    /* Отзывы */
+    .quotes{display:grid; grid-template-columns: repeat(3,1fr); gap:18px}
+    .quote{border:1px solid var(--line); border-radius:var(--radius); padding:22px; background: linear-gradient(180deg, #11274f, #0d1d39); box-shadow: var(--shadow)}
+    .quote blockquote{margin:0 0 14px; font-size:1rem}
+    .quote cite{display:block; font-style:normal; color:var(--muted)}
+    .quote small{display:block; margin-top:2px; color:var(--muted); opacity:.8}
+
+    /* FAQ */
+    .faq{display:grid; gap:14px}
+    .faq-item{border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; background:#0f2547}
+    .faq-item.open{border-color:rgba(62,112,205,.6); box-shadow:0 0 0 1px rgba(62,112,205,.25)}
+    .faq-q{width:100%; border:none; background:none; color:inherit; font:inherit; display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer; text-align:left; padding:0}
+    .faq-q span:first-child{font-weight:600}
+    .faq-icon{width:26px; height:26px; border:1px solid var(--line); border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-weight:600; transition: transform .2s ease, border-color .2s ease}
+    .faq-item.open .faq-icon{transform:rotate(45deg); border-color:var(--accent)}
+    .faq-a{margin-top:12px; color:var(--muted)}
+
     /* Портфолио */
     .folio{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
     .folio figure{position:relative; margin:0; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#0f2547}
@@ -110,6 +134,7 @@
     .meta dd{margin:0}
     .map{border-radius:var(--radius); border:1px solid var(--line); background: conic-gradient(from 180deg, #1a3566, #11274f, #1a3566); display:grid; place-items:center; height:100%}
     .map span{opacity:.7}
+    .form-status{min-height:1.2em; color:var(--muted)}
 
     footer{padding:28px 0 48px; color:var(--muted); border-top:1px solid var(--line)}
 
@@ -117,6 +142,7 @@
       .features{grid-template-columns: repeat(2,1fr)}
       .cards{grid-template-columns: repeat(2,1fr)}
       .folio{grid-template-columns: repeat(2,1fr)}
+      .quotes{grid-template-columns: repeat(2,1fr)}
       .hero-grid, .contacts{grid-template-columns:1fr}
     }
     @media (max-width: 480px){
@@ -129,6 +155,9 @@
       .features{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
       .folio{grid-template-columns:1fr}
+      .quotes{grid-template-columns:1fr}
+      .step{flex-direction:column}
+      .step-index{width:40px; height:40px}
       .cta{gap:10px}
       .btn{width:100%; justify-content:center}
     }
@@ -155,8 +184,11 @@
         <button class="burger" aria-label="Меню" onclick="toggleMenu()"><span></span></button>
         <div id="menu" class="menu">
           <a href="#about">О компании</a>
+          <a href="#process">Процесс</a>
           <a href="#services">Услуги</a>
           <a href="#portfolio">Портфолио</a>
+          <a href="#testimonials">Отзывы</a>
+          <a href="#faq">FAQ</a>
           <a href="#contacts">Контакты</a>
           <a href="#contacts" class="btn">Заказать печать</a>
         </div>
@@ -285,6 +317,44 @@
     </div>
   </section>
 
+  <!-- Процесс -->
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title">Как мы работаем</h2>
+      <p class="section-lead">Проводим заказ через прозрачный цикл: от проверки файла до аккуратной доставки. Так вы понимаете, на каком этапе тираж прямо сейчас.</p>
+      <ol class="timeline">
+        <li class="step reveal">
+          <div class="step-index">01</div>
+          <div>
+            <h3>Бриф и файлы</h3>
+            <p>Обсуждаем задачу, тираж, носители и сроки. Проверяем PDF/X, вылеты, Pantone, даём рекомендации по материалам.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <div class="step-index">02</div>
+          <div>
+            <h3>Препресс и цвет</h3>
+            <p>Готовим цветопробу, настраиваем ICC/DeviceLink, согласуем плотности. При необходимости правим макет без доплат.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <div class="step-index">03</div>
+          <div>
+            <h3>Печать и постпечатная обработка</h3>
+            <p>Запускаем тираж, контролируем спектрофотометром, режем, фальцуем, ламинируем и упаковываем под задачу.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <div class="step-index">04</div>
+          <div>
+            <h3>Доставка и отчёт</h3>
+            <p>Курьер по Ростову, ТК по России или самовывоз. Отправляем фотоотчёт и трек-номер сразу после отгрузки.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- Портфолио -->
   <section id="portfolio">
     <div class="container">
@@ -297,6 +367,86 @@
         <figure class="reveal"><img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=1200&q=80" alt="Визуал фирменного стиля"><figcaption>Фирстиль • Набор</figcaption></figure>
         <figure class="reveal"><img src="https://images.unsplash.com/photo-1517814387957-731046d2d7e5?auto=format&fit=crop&w=1200&q=80" alt="Широкоформат в производстве"><figcaption>Широкоформат • Производство</figcaption></figure>
         <figure class="reveal"><img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1200&q=80" alt="Каталоги и буклеты"><figcaption>Каталоги • Буклеты</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">Отзывы клиентов</h2>
+      <p class="section-lead">Нам доверяют маркетинг-директора, архитекторы и владельцы локальных брендов. Вот что они говорят о совместных проектах.</p>
+      <div class="quotes">
+        <figure class="quote reveal">
+          <blockquote>«Получили визитки в день обращения. Команда сама привела макет к стандарту и подсказала, как избежать переплаты за бумагу».</blockquote>
+          <figcaption>
+            <strong>Анна Чередниченко</strong>
+            <cite>маркетолог кофейной сети «Воробей»</cite>
+            <small>35 точек в Ростове-на-Дону</small>
+          </figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <blockquote>«Пирамида» берёт на себя весь препресс. Нам остаётся утвердить цветопробу и ждать тираж — сроки не срывались ни разу.</blockquote>
+          <figcaption>
+            <strong>Максим Владов</strong>
+            <cite>арт‑директор бюро «Forma»</cite>
+            <small>брендбук + POS для сети аптек</small>
+          </figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <blockquote>Листовки для промо-кампании доставили ночью, чтобы утром запустить раздачу. Курьер привёз образец и отчёт о тираже.</blockquote>
+          <figcaption>
+            <strong>Ольга Демидова</strong>
+            <cite>руководитель отдела рекламы ТРЦ «Горизонт»</cite>
+            <small>50 000 листовок за 36 часов</small>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Частые вопросы</h2>
+      <p class="section-lead">Собрали ответы на вопросы, которые слышим чаще всего. Если не нашли свой — напишите в чат или заполните форму.</p>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-q-1">
+            <span>Можно ли сделать срочный тираж за сутки?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" id="faq-panel-1" role="region" aria-labelledby="faq-q-1" hidden>
+            <p>Да, если макет готов к печати и тираж до 5000 экземпляров. Вечером подтверждаем задачу, утром запускаем машины, к следующему дню выдаём готовый заказ.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-q-2">
+            <span>С какими форматами файлов вы работаете?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" id="faq-panel-2" role="region" aria-labelledby="faq-q-2" hidden>
+            <p>Предпочтение — PDF/X-1a или PDF/X-4. Также принимаем .ai, .tiff, .psd, открытые макеты InDesign. Поможем проверить overprint, вылеты и соответствие ICC-профилям.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-q-3">
+            <span>Делаете ли вы доставку по России?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" id="faq-panel-3" role="region" aria-labelledby="faq-q-3" hidden>
+            <p>Да. По Ростову — экспресс-курьеры и самовывоз из цеха. В другие города отправляем СДЭК/Деловые Линии, упаковываем под перевозку и выдаём трек-номер.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-q-4">
+            <span>Можно ли получить цветопробу до оплаты тиража?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" id="faq-panel-4" role="region" aria-labelledby="faq-q-4" hidden>
+            <p>Да, делаем контрактную цветопробу на том же материале. После согласования фиксируем параметры в техкарте и запускаем печать.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -320,21 +470,23 @@
 
         <!-- Форма заявки с загрузкой файлов (прогрессивное улучшение) -->
         <form id="orderForm" class="reveal" style="margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:12px">
-          <input required name="name" placeholder="Ваше имя" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
-          <input required type="email" name="email" placeholder="E‑mail" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
-          <input name="phone" placeholder="Телефон" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
-          <select name="service" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+          <input required name="name" id="name" aria-label="Ваше имя" autocomplete="name" placeholder="Ваше имя" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+          <input required type="email" name="email" id="email" aria-label="E‑mail" autocomplete="email" placeholder="E‑mail" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+          <input name="phone" id="phone" aria-label="Телефон" inputmode="tel" autocomplete="tel" placeholder="Телефон" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+          <select required name="service" id="service" aria-label="Услуга" style="grid-column:span 1; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+            <option value="" disabled selected>Что печатаем?</option>
             <option value="Визитки">Визитки</option>
             <option value="Листовки">Листовки</option>
             <option value="Баннеры">Баннеры</option>
             <option value="Другое">Другое</option>
           </select>
-          <textarea name="message" rows="4" placeholder="Комментарий (тираж, сроки, материалы)" style="grid-column:span 2; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)"></textarea>
+          <textarea name="message" id="message" rows="4" aria-label="Комментарий" placeholder="Комментарий (тираж, сроки, материалы)" style="grid-column:span 2; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)"></textarea>
           <div style="grid-column:span 2; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
-            <input id="files" type="file" multiple accept=".pdf,.ai,.psd,.tif,.tiff,.zip" style="padding:10px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
+            <input id="files" aria-label="Файлы с макетами" type="file" multiple accept=".pdf,.ai,.psd,.tif,.tiff,.zip" style="padding:10px; border-radius:12px; border:1px solid var(--line); background:#0f2547; color:var(--ink)">
             <button class="btn" type="submit">Отправить заявку</button>
             <span class="note">Можно прикрепить PDF/X и архивы. Если браузер не поддерживает отправку файлов — откроется письмо на E‑mail.</span>
           </div>
+          <div id="formStatus" class="form-status note" role="status" aria-live="polite" style="grid-column:span 2"></div>
         </form>
       </div>
 
@@ -382,10 +534,20 @@
 
     // Отправка формы: Web Share API с файлами (где поддерживается), иначе mailto
     const form = document.getElementById('orderForm');
+    const statusField = document.getElementById('formStatus');
+    const filesInput = document.getElementById('files');
+
+    const setStatus = (message)=>{
+      if(statusField){
+        statusField.textContent = message;
+      }
+    };
+
     form?.addEventListener('submit', async (e)=>{
       e.preventDefault();
       const fd = new FormData(form);
-      const files = document.getElementById('files').files;
+      const files = filesInput?.files || [];
+      const hasFiles = files && files.length > 0;
       const subject = `Заявка — ${fd.get('service') || 'Печать'}`;
       const body = [
         `Имя: ${fd.get('name')}`,
@@ -394,22 +556,70 @@
         `Услуга: ${fd.get('service')}`,
         `Комментарий: ${fd.get('message') || '-'}`,
       ].join('%0D%0A');
+      setStatus('Готовим заявку…');
 
       // Попытка расшарить через системный шаринг
-      if (navigator.canShare && files && files.length){
+      if (navigator.canShare && hasFiles){
+        const fileArray = Array.from(files);
+        let canShareFiles = false;
         try{
-          const fileArray = Array.from(files);
-          await navigator.share({
-            title: subject,
-            text: decodeURIComponent(body),
-            files: fileArray
-          });
-          return;
-        }catch(err){ /* фолбэк на mailto */ }
+          canShareFiles = navigator.canShare({ files: fileArray });
+        }catch(err){
+          canShareFiles = false;
+        }
+        if(canShareFiles){
+          try{
+            await navigator.share({
+              title: subject,
+              text: decodeURIComponent(body),
+              files: fileArray
+            });
+            setStatus('Файлы переданы через системное окно шаринга. Мы свяжемся в течение часа.');
+            form.reset();
+            return;
+          }catch(err){ /* фолбэк на mailto */ }
+        }
       }
       // mailto без вложений (уточняем вложить файлы вручную)
       window.location.href = `mailto:info@piramida-print.ru?subject=${encodeURIComponent(subject)}&body=${body}%0D%0A%0D%0A(Приложите файлы вручную)`;
+      setStatus('Откроется окно почтового клиента. Если не сработало — напишите на info@piramida-print.ru.');
     });
+
+    // FAQ-аккордеон
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    function openItem(item){
+      const trigger = item.querySelector('.faq-q');
+      const panelId = trigger?.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      trigger?.setAttribute('aria-expanded', 'true');
+      item.classList.add('open');
+      if(panel){ panel.hidden = false; }
+    }
+
+    function closeItem(item){
+      const trigger = item.querySelector('.faq-q');
+      const panelId = trigger?.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      trigger?.setAttribute('aria-expanded', 'false');
+      item.classList.remove('open');
+      if(panel){ panel.hidden = true; }
+    }
+
+    faqItems.forEach((item)=>{
+      const trigger = item.querySelector('.faq-q');
+      if(!trigger){ return; }
+      trigger.addEventListener('click', ()=>{
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        faqItems.forEach(closeItem);
+        if(!isOpen){
+          openItem(item);
+        }
+      });
+    });
+    if(faqItems.length){
+      openItem(faqItems[0]);
+    }
   </script>
 </body>
 </html>
